@@ -22,6 +22,17 @@ dependencies {
 	implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
 	developmentOnly("org.springframework.boot:spring-boot-devtools")
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
+
+	// Jpa
+	implementation("org.springframework.boot:spring-boot-starter-data-jpa")
+
+	// Kafka
+	implementation("org.springframework.kafka:spring-kafka")
+	implementation("org.apache.kafka:kafka-streams")
+	testImplementation("org.springframework.kafka:spring-kafka-test")
+
+	// Database
+	runtimeOnly("org.postgresql:postgresql")
 }
 
 tasks.withType<KotlinCompile> {
