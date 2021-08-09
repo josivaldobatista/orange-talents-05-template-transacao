@@ -8,20 +8,16 @@ import javax.persistence.*
 
 @Entity
 class Transacao(
-  uuid: String,
-  valor: BigDecimal,
-  criadoEm: LocalDateTime,
-  toModel: Estabelecimento,
-  toModel1: Cartao,
+  val uuid: String,
+  val valor: BigDecimal,
+  val criadoEm: LocalDateTime,
+  @ManyToOne(cascade = [CascadeType.ALL])
+  val estabelecimento: Estabelecimento,
+  @ManyToOne(cascade = [CascadeType.ALL])
+  val cartao: Cartao
 ) {
 
   @Id
   @GeneratedValue
   val id: Long? = null
-
-  @ManyToOne(cascade = [CascadeType.ALL])
-  lateinit var estabelecimento: Estabelecimento
-
-  @ManyToOne(cascade = [CascadeType.ALL])
-  lateinit var cartao: Cartao
 }
