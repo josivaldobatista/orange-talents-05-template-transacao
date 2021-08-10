@@ -16,13 +16,18 @@ class TrasacaoConsumer(
 ) {
 
   @KafkaListener(
-    groupId = "{spring.kafka.consumer.group-id}",
-    topics = ["spring.kafka.topic.transactions"])
+    groupId = "transacao",
+    topics = ["transacoes"])
   @Transactional
   fun consome(dto: TransacaoDTO) {
     val transacao: Transacao = dto.toModel(estabelecimentoRepository, cartaoRepository)
     println("**** TRANSAÇÃO: $transacao")
     transacaoRepository.save(transacao)
+  }
+
+  @Bean
+  fun jsonMessageConverter(): JsonMessageConverter {
+    return JsonMessageConverter()
   }
 
 }

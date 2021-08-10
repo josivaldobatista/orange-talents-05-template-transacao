@@ -10,6 +10,8 @@ class Cartao(
   val email: String
 ) {
 
+  private constructor(): this("", "")
+
   @Id
   @GeneratedValue
   val id: Long? = null

@@ -1,14 +1,14 @@
 package br.com.zup.transacao.transacoesdecartao.cartao
 
 data class CartaoDTO(
-  val uuid: String,
+  val id: String,
   val email: String
 ) {
   fun toModel(cartaoRepository: CartaoRepository): Cartao {
-    val entity = cartaoRepository.findByUuid(uuid)
+    val entity = cartaoRepository.findByUuid(id)
     if (entity.isPresent) {
       return entity.get()
     }
-    return Cartao(uuid, email)
+    return Cartao(id, email)
   }
 }
