@@ -20,4 +20,6 @@ class Estabelecimento(
   @Column(nullable = false)
   val criadoEm: LocalDateTime = LocalDateTime.now()
 
+  constructor(): this("", "", "")
+
 }
